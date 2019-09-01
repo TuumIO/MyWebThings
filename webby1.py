@@ -43,7 +43,7 @@ def make_thing():
     thing.add_property(
         Property(thing,
                  'on',
-                 Value(True),
+                 Value(True, lambda v: print('On-State is now', v)),
                  metadata={
                      '@type': 'OnOffProperty',
                      'title': 'On/Off',
