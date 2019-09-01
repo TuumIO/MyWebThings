@@ -5,6 +5,15 @@ import logging
 import time
 import uuid
 
+import RPi.GPIO as GPIO
+
+GPIO.setmode(GPIO.BCM)
+GPIO.setwarnings(False)
+
+led = 16
+
+GPIO.setup(led,GPIO.OUT)
+
 
 class OverheatedEvent(Event):
 
