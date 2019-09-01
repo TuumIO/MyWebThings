@@ -26,9 +26,9 @@ class FadeAction(Action):
 def make_thing():
     thing = Thing(
         'urn:dev:ops:my-lamp-1234',
-        'My Lamp',
+        'My pi Led',
         ['OnOffSwitch', 'Light'],
-        'A web connected lamp'
+        'A web connected Led'
     )
 
     thing.add_property(
@@ -41,48 +41,7 @@ def make_thing():
                      'type': 'boolean',
                      'description': 'Whether the lamp is turned on',
                  }))
-    thing.add_property(
-        Property(thing,
-                 'brightness',
-                 Value(50),
-                 metadata={
-                     '@type': 'BrightnessProperty',
-                     'title': 'Brightness',
-                     'type': 'integer',
-                     'description': 'The level of light from 0-100',
-                     'minimum': 0,
-                     'maximum': 100,
-                     'unit': 'percent',
-                 }))
-
-    thing.add_available_action(
-        'fade',
-        {
-            'title': 'Fade',
-            'description': 'Fade the lamp to a given level',
-            'input': {
-                'type': 'object',
-                'required': [
-                    'brightness',
-                    'duration',
-                ],
-                'properties': {
-                    'brightness': {
-                        'type': 'integer',
-                        'minimum': 0,
-                        'maximum': 100,
-                        'unit': 'percent',
-                    },
-                    'duration': {
-                        'type': 'integer',
-                        'minimum': 1,
-                        'unit': 'milliseconds',
-                    },
-                },
-            },
-        },
-        FadeAction)
-
+    
     thing.add_available_event(
         'overheated',
         {
