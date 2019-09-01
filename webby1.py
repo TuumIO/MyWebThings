@@ -43,11 +43,7 @@ def make_thing():
     thing.add_property(
         Property(thing,
                  'on',
-                 Value(True, lambda v: print('On-State is now', v)),
-                 if v == true:
-                    GPIO.output(led,1)
-                 else:
-                    GPIO.output(led,0)
+                 Value(True, lambda v: GPIO.output(led,v)),
                  metadata={
                      '@type': 'OnOffProperty',
                      'title': 'On/Off',
